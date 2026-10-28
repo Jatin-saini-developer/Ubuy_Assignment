@@ -1,0 +1,303 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.card .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card .tab-btn {
+    padding: 18px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.02em;
+}
+
+.card .tab-btn.inactive {
+    background: #f0f0f0;
+    color: #888;
+}
+
+.card .tab-btn.active {
+    background: #ffa500;
+    color: #fff;
+}
+
+.card .form-panel {
+    padding: 28px 32px 30px;
+    display: none;
+}
+
+.card .form-panel.visible {
+    display: block;
+}
+
+.card .field {
+    margin-bottom: 18px;
+}
+
+.card .field label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.card .field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: #222;
+    background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.card .field input:focus {
+    border-color: #ffa500;
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.15);
+    background: #fff;
+}
+
+.card .pw-wrap {
+    position: relative;
+}
+
+.card .pw-wrap input {
+    padding-right: 44px;
+}
+
+.card .toggle-pw {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.card .toggle-pw:focus-visible {
+    outline: 2px solid #ffa500;
+    border-radius: 4px;
+}
+
+.card .method-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.card .method-group {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1.5px solid #ddd;
+    flex-shrink: 0;
+}
+
+.card .method-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: none;
+    background: #f0f0f0;
+    color: #888;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.card .method-btn.active {
+    background: #ffa500;
+    color: #fff;
+}
+
+.card .method-input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.card .aux-link {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #ffa500;
+    text-decoration: none;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.card .aux-link:hover {
+    text-decoration: underline;
+}
+
+.card .aux-link:focus-visible {
+    outline: 2px solid #ffa500;
+    border-radius: 3px;
+}
+
+.card .recaptcha-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    background: #fafafa;
+}
+
+.card .recaptcha-box input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #ffa500;
+    flex-shrink: 0;
+}
+
+.card .recaptcha-label {
+    font-size: 0.9rem;
+    color: #444;
+    flex: 1;
+}
+
+.card .recaptcha-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.6rem;
+    color: #888;
+    gap: 2px;
+}
+
+.card .recaptcha-logo svg {
+    width: 32px;
+    height: 32px;
+}
+
+.card .check-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 0.83rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.card .check-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: #ffa500;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.card .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: #ffa500;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-bottom: 12px;
+    letter-spacing: 0.03em;
+}
+
+.card .btn-primary:hover {
+    background: #e09400;
+}
+
+.card .btn-primary:active {
+    transform: scale(0.98);
+}
+
+.card .btn-primary:focus-visible {
+    outline: 3px solid #ffa500;
+    outline-offset: 3px;
+}
+
+.card .disclaimer {
+    font-size: 0.75rem;
+    color: #777;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.card .disclaimer a {
+    color: #ffa500;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.card .social-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.card .social-icon {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .card .form-panel {
+        padding: 22px 20px 24px;
+    }
+
+    .card .tab-btn {
+        font-size: 0.92rem;
+        padding: 15px 0;
+    }
+}
