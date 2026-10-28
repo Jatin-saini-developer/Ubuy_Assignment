@@ -13,7 +13,6 @@
 
     <div class="card" role="main">
 
-        <!-- Tab bar -->
         <div class="tabs" role="tablist" aria-label="Authentication mode">
             <button class="tab-btn" id="tab-login" role="tab" aria-selected="false" aria-controls="panel-login"
                 onclick="switchTab('login')">Log In</button>
@@ -22,18 +21,15 @@
                 onclick="switchTab('signup')">Sign Up</button>
         </div>
 
-        <!-- ───── LOGIN PANEL ───── -->
         <section id="panel-login" class="form-panel" role="tabpanel" aria-labelledby="tab-login">
             <form novalidate onsubmit="handleLogin(event)">
 
-                <!-- Email -->
                 <div class="field">
                     <label for="login-email">Email Address <span aria-hidden="true">*</span></label>
                     <input type="email" id="login-email" name="email" placeholder="you@example.com" required
                         autocomplete="email" aria-required="true" />
                 </div>
 
-                <!-- Method switcher -->
                 <div class="method-row">
                     <div class="method-group" role="group" aria-label="Authentication method">
                         <button type="button" class="method-btn active" id="login-pw-btn" aria-pressed="true"
@@ -42,88 +38,54 @@
                             onclick="switchLoginMethod('otp')">OTP</button>
                     </div>
 
-                    <!-- Password input -->
                     <div class="field method-input" id="login-pw-field">
                         <div class="pw-wrap">
                             <input type="password" id="login-password" name="password" placeholder="Password *" required
                                 autocomplete="current-password" aria-required="true" aria-label="Password" />
                             <button type="button" class="toggle-pw" aria-label="Show password"
                                 onclick="togglePw('login-password', this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- OTP input -->
                     <div class="field method-input" id="login-otp-field" style="display:none;">
                         <input type="text" id="login-otp" name="otp" placeholder="OTP *" maxlength="6"
                             inputmode="numeric" pattern="[0-9]{4,6}" aria-label="One-time password" />
                     </div>
                 </div>
 
-                <!-- Forgot / Get OTP link -->
                 <a href="#" class="aux-link" id="login-aux-link">Forgot Your Password?</a>
 
-                <!-- Submit -->
                 <button type="submit" class="btn-primary" style="margin-top:20px;">Login</button>
 
-                <!-- Social login -->
                 <div class="social-bar" role="group" aria-label="Social login options">
                     <span class="social-icon" aria-label="Google">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
-                            <path fill="#EA4335"
-                                d="M24 9.5c3.1 0 5.6 1.1 7.6 2.9l5.6-5.6C33.8 3.5 29.2 1.5 24 1.5 14.9 1.5 7.2 7 3.7 14.8l6.6 5.1C12 13.5 17.5 9.5 24 9.5z" />
-                            <path fill="#4285F4"
-                                d="M46.5 24.5c0-1.6-.1-2.8-.4-4H24v7.6h12.7c-.5 2.9-2.1 5.3-4.4 6.9l6.8 5.3c4-3.7 6.4-9.2 6.4-15.8z" />
-                            <path fill="#34A853"
-                                d="M10.3 28.6A14.4 14.4 0 0 1 9.5 24c0-1.6.3-3.1.7-4.6L3.7 14.3A22.5 22.5 0 0 0 1.5 24c0 3.6.9 7 2.4 10l6.4-5.4z" />
-                            <path fill="#FBBC05"
-                                d="M24 46.5c5.2 0 9.6-1.7 12.8-4.7l-6.8-5.3c-1.7 1.2-4 1.9-6 1.9-6.5 0-12-4-14-9.7l-6.4 5.4C7.2 41 15 46.5 24 46.5z" />
-                        </svg>
+                        <i class="fa-brands fa-google"></i>
                     </span>
                     <span class="social-icon" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
-                            <path fill="#3F51B5"
-                                d="M42 24c0-9.9-8.1-18-18-18S6 14.1 6 24c0 8.6 6 15.8 14.1 17.6V29.5h-4v-5.5h4v-4.1c0-4 2.4-6.2 6.1-6.2 1.7 0 3.6.3 3.6.3v4h-2c-2 0-2.6 1.2-2.6 2.5v3h4.5l-.7 5.5h-3.8v12.1C36 39.8 42 32.6 42 24z" />
-                        </svg>
+                        <i class="fa-brands fa-facebook"></i>
                     </span>
                     <span class="social-icon" aria-label="Apple">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#000">
-                            <path
-                                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.37.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.39-1.32 2.76-2.53 3.99zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-                        </svg>
+                        <i class="fa-brands fa-apple"></i>
                     </span>
                     <span class="social-icon" aria-label="PayPal">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
-                            <path fill="#1565C0"
-                                d="M38.3 15.3C37.7 11 33.9 8 29.5 8H15.3c-.8 0-1.5.6-1.6 1.4L8.1 37.8c-.1.6.4 1.2 1 1.2h7l1.8-11.2-.1.5c.2-1.2 1.2-2.1 2.4-2.1h5c9.7 0 17.3-4 19.5-15.5.1-.4.1-.9.2-1.4z" />
-                            <path fill="#039BE5"
-                                d="M38.3 15.3c-.1.5-.2.9-.2 1.4-2.2 11.5-9.8 15.5-19.5 15.5h-5c-1.2 0-2.2.9-2.4 2.1l-2.7 16.8c-.1.6.4 1.2 1 1.2h6.7c.8 0 1.5-.6 1.6-1.4l.1-.3 1.3-8.4.1-.5c.1-.8.8-1.4 1.6-1.4h1c6.8 0 12.1-2.8 13.7-10.8.7-3.3.3-6.1-1.4-8.2z" />
-                        </svg>
+                        <i class="fa-brands fa-paypal"></i>
                     </span>
                     <span>Login with Social Accounts</span>
                 </div>
-
             </form>
         </section>
 
-        <!-- ───── SIGNUP PANEL ───── -->
         <section id="panel-signup" class="form-panel visible" role="tabpanel" aria-labelledby="tab-signup">
             <form novalidate onsubmit="handleSignup(event)">
 
-                <!-- Email -->
                 <div class="field">
                     <label for="signup-email">Email Address <span aria-hidden="true">*</span></label>
                     <input type="email" id="signup-email" name="email" placeholder="you@example.com" required
                         autocomplete="email" aria-required="true" />
                 </div>
 
-                <!-- Method switcher -->
                 <div class="method-row">
                     <div class="method-group" role="group" aria-label="Authentication method">
                         <button type="button" class="method-btn active" id="signup-otp-btn" aria-pressed="true"
@@ -132,51 +94,36 @@
                             onclick="switchSignupMethod('password')">Password</button>
                     </div>
 
-                    <!-- OTP input (default for signup) -->
                     <div class="field method-input" id="signup-otp-field">
                         <input type="text" id="signup-otp" name="otp" placeholder="OTP *" maxlength="6"
                             inputmode="numeric" pattern="[0-9]{4,6}" aria-label="One-time password"
                             aria-required="true" />
                     </div>
 
-                    <!-- Password input -->
                     <div class="field method-input" id="signup-pw-field" style="display:none;">
                         <div class="pw-wrap">
                             <input type="password" id="signup-password" name="password" placeholder="Password *"
                                 autocomplete="new-password" aria-label="Password" />
                             <button type="button" class="toggle-pw" aria-label="Show password"
                                 onclick="togglePw('signup-password', this)">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" />
-                                    <circle cx="12" cy="12" r="3" />
-                                </svg>
+                                <i class="fa-regular fa-eye" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Get OTP / Forgot link -->
                 <a href="#" class="aux-link" id="signup-aux-link" onclick="handleGetOtp(event)">Get OTP ?</a>
 
-                <!-- reCAPTCHA mock -->
                 <div class="recaptcha-box" role="group" aria-label="CAPTCHA verification">
                     <input type="checkbox" id="recaptcha-check" aria-label="I'm not a robot" />
                     <label class="recaptcha-label" for="recaptcha-check">I'm not a robot</label>
                     <div class="recaptcha-logo" aria-hidden="true">
-                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#4A90D9" d="M32 4 L60 20 L60 44 L32 60 L4 44 L4 20 Z" />
-                            <path fill="#fff" d="M32 16 a16 16 0 1 1 0 32 a16 16 0 0 1 0-32z" />
-                            <path fill="#4A90D9" d="M32 22 a10 10 0 1 1 0 20 a10 10 0 0 1 0-20z" />
-                            <path fill="#fff" d="M32 27 a5 5 0 1 1 0 10 a5 5 0 0 1 0-10z" />
-                        </svg>
+                        <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: #4A90D9;"></i>
                         <span>reCAPTCHA</span>
                         <span style="font-size:.55rem;color:#aaa;">Privacy · Terms</span>
                     </div>
                 </div>
 
-                <!-- Mailing list -->
                 <div class="check-row">
                     <input type="checkbox" id="mailing-list" name="mailing" />
                     <label for="mailing-list">
@@ -185,16 +132,14 @@
                     </label>
                 </div>
 
-                <!-- Submit -->
                 <button type="submit" class="btn-primary">Register</button>
 
-                <!-- Disclaimer -->
                 <p class="disclaimer">
                     By continuing, you agree to Ubuy's
                     <a href="#" onclick="return false;">Terms and Conditions</a>
                 </p>
 
-                <!-- Social login -->
+
                 <div class="social-bar" role="group" aria-label="Social login options">
                     <span class="social-icon" aria-label="Google">
                         <i class="fa-brands fa-google"></i>
